@@ -10,7 +10,11 @@ function getJoke() {
 	xhr.open('GET', url);
 	xhr.addEventListener('load', function() {
 	    var response = JSON.parse(xhr.response);
-	    paragraph.innerHTML = response.value.joke;
+	    	 if (response.value.joke != '') {
+	    	 	paragraph.innerHTML = response.value.joke;
+	    	 } else {
+	    	 	paragraph.innerHTML = "Brak żartu nr:" + response.value.id;
+	    	 }
 	});
 	xhr.send();
 }
